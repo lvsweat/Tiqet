@@ -20,7 +20,7 @@ func ConnectDatabase() {
 	}
 	//we read our .env file
 	host := os.Getenv("POSTGRES_HOST")
-	port := os.Getenv("POSTGRES_PORT") // don't forget to convert int since port is int type.
+	port := os.Getenv("POSTGRES_PORT")
 	user := os.Getenv("POSTGRES_USER")
 	pass := os.Getenv("POSTGRES_PASSWORD")
 	dbname := os.Getenv("POSTGRES_DB_NAME")
