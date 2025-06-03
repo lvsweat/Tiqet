@@ -1,0 +1,202 @@
+{
+  "login": {
+    "title": "Login",
+    "description": "Sign in to your local Tiqet account",
+    "form": {
+      "username": "Username",
+      "password": "Password",
+      "submit": "Login"
+    },
+    "forgot_password": "Forgot password?",
+    "signup": {
+      "title": "No account?",
+      "description": "Your IT team must set up an account for you. Create a tick-... Contact them to get an account set up for you so you can start using Tiqet!"
+    },
+    "message": {
+      "auth_failed": "Invalid username or password"
+    }
+  },
+  "pagination": {
+    "summary": "Showing {{from}} to {{to}} of {{total}} results",
+    "rows_per_page": "Rows per page"
+  },
+  "signup": {
+    "title": "Register",
+    "description": "Create your account",
+    "register_now": "Register Now!",
+    "form": {
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "submit": "Create Account"
+    }
+  },
+  "action": {
+    "info": "Info",
+    "edit": "Edit",
+    "delete": "Delete",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "reset": "Reset"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "auto": "Auto"
+  },
+  "dashboard": {
+    "featured": {
+      "ticket_count": "Submitted Tickets",
+      "resolved_ticket_count": "Resolved Tickets",
+      "acceptance_time": "Acceptance Time",
+      "time_to_resolution": "Time To Resolution",
+      "sessions": "Sessions",
+      "action": {
+        "action1": "Action",
+        "action2": "Another action",
+        "action3": "Something else"
+      }
+    },
+    "all_stats": {
+      "title": "All Stats"
+    },
+    "weekly_stats": {
+      "title": "Weekly Stats",
+      "stats": {
+        "tickets": "Submitted Tickets",
+        "acceptance_time": "Acceptance Time"
+      },
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "male": "Male",
+      "female": "Female",
+      "organic": "Organic Search",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    },
+    "listing": {
+      "headers": {
+        "header1": "User",
+        "header2": "Usage",
+        "header3": "Payment Method",
+        "header4": "Activity"
+      }
+    }
+  },
+  "pokemons": {
+    "title": "Pokémon",
+    "add_new": "Add new",
+    "attribute": {
+      "name": "Name",
+      "type": "Type",
+      "egg_group": "Egg Group",
+      "hp": "Hp",
+      "attack": "Atk",
+      "defense": "Def",
+      "sp_attack": "SpA",
+      "sp_defense": "SpD",
+      "speed": "Spd",
+      "total": "Total"
+    }
+  },
+  "featured_nav": {
+    "dashboard": "Dashboard"
+  },
+  "notification": {
+    "message": "You have {{total}} notifications",
+    "items": {
+      "new_user": "New user registered",
+      "deleted_user": "User deleted",
+      "sales_report": "Sales report is ready",
+      "new_client": "New client",
+      "server_overloaded": "Server overloaded"
+    },
+    "server": {
+      "title": "server",
+      "processes": "Processes",
+      "cores": "Cores",
+      "items": {
+        "cpu": "CPU usage",
+        "memory": "Memory usage",
+        "ssd1": "SSD 1 usage"
+      }
+    }
+  },
+  "task": {
+    "message": "You have {{total}} pending tasks",
+    "items": {
+      "task1": "Upgrade Next.JS",
+      "task2": "Train Pokemons",
+      "task3": "Complete Pokedex",
+      "task4": "Catch all shiny",
+      "task5": "Beat all gyms"
+    },
+    "view_all": "View all tasks"
+  },
+  "messages": {
+    "message": "You have {{total}} messages",
+    "items": {
+      "item1": {
+        "user": "John Doe",
+        "time": "Just now",
+        "title": "Pet Pikachu",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt"
+      },
+      "item2": {
+        "user": "John Doe",
+        "time": "5 mins ago",
+        "title": "Dress Eevee",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt"
+      },
+      "item3": {
+        "user": "John Doe",
+        "time": "1:52 PM",
+        "title": "Team up training",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt"
+      },
+      "item4": {
+        "user": "John Doe",
+        "time": "4:03 PM",
+        "title": "Go to Safari Zone",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt"
+      }
+    }
+  },
+  "profile": {
+    "general": {
+      "title": "General",
+      "items": {
+        "notifs": "Notifications"
+      }
+    },
+    "other": {
+      "title": "Other",
+      "items": {
+        "account": "Account",
+        "settings": "Settings"
+      }
+    },
+    "logout": "Logout"
+  },
+  "sidebar": {
+    "items": {
+      "dashboard": "Dashboard",
+      "general": "General",
+      "tickets": "Tickets",
+      "tickets_items": {
+        "open_tickets": "Open Tickets",
+        "submit_ticket": "Submit New Ticket",
+        "ticket_history": "Ticket History"
+      },
+      "account": "Account",
+      "settings": "Settings"
+    }
+  }
+}

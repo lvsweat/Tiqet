@@ -1,0 +1,10 @@
+services:
+    frontend:
+        build: ./frontend
+
+    backend:
+        build: ./backend
+
+    db:
+        image: postgres
+        restart: always
