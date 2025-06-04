@@ -106,6 +106,7 @@ func GetTicketsEndpoint(c *gin.Context) {
 
 	switch getTicketsErr {
 	case 0:
+		fallthrough
 	case 1:
 		c.IndentedJSON(http.StatusOK, gin.H{"data": tickets})
 		return
