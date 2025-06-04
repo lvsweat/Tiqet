@@ -1,9 +1,9 @@
 services:
     frontend:
-        build: ./frontend
+        build: ./tiqet-frontend
 
     backend:
-        build: ./backend
+        build: ./tiqet-backend
 
     db:
         image: postgres
