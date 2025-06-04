@@ -12,14 +12,6 @@ Thank you for considering contributing to Tiqet and taking the initiative! Pleas
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
-
-1. Create your own fork of the code
-2. Do the changes in your fork
-3. If you like the change and think the project could use it:
-    * Be sure you have followed the code style for the project.
-    * Be sure that you have followed the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) when committing
-4. Make a pull request!
-
 ## <a name="bug"></a> Found a Bug?
 
 ### If you find a security vulnerability, do NOT open an issue. Email lvswetnam@gmail.com instead.
