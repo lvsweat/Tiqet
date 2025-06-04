@@ -4,24 +4,22 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 )
 
 func AuthMiddleware(c *gin.Context) {
-	authheader := c.GetHeader("Authorization")
+	authToken, err := c.Cookie("token")
 
-	if authheader == "" || !strings.HasPrefix(authheader, "Bearer ") {
+	if err != nil {
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"data": nil})
 		c.Abort()
 		return
 	}
 
-	jwtToken := strings.TrimPrefix(authheader, "Bearer ")
 
-	token, parseErr := jwt.Parse(jwtToken, func(t *jwt.Token) (interface{}, error) {
+	token, parseErr := jwt.Parse(authToken, func(t *jwt.Token) (interface{}, error) {
 		if t.Method.Alg() != "HS256" {
 			return nil, fmt.Errorf("bad sign algorithm")
 		}
@@ -36,7 +34,7 @@ func AuthMiddleware(c *gin.Context) {
 	}
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok {
-		c.Set("authedId", claims["userId"])
+		c.Set("authedId", claims["sub"])
 		c.Next()
 		return
 	} else {
