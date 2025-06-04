@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 import {
@@ -58,9 +60,10 @@ export default function SubmitTicketForm({ tags }: Props) {
       <Form.Group className="mb-3" controlId="submitTicketForm.tags">
         <Form.Label>Tags</Form.Label>
         {tags.map((tag) => (
-          <Form.Check // prettier-ignore
+          <Form.Check
             type="checkbox"
             name={tag}
+            key={tag}
             id={tag}
             label={tag}
           />
