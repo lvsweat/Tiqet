@@ -37,7 +37,7 @@ You can request a new feature by submitting a feature request. If you would like
 
 We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification for commits, pull requests, and issues submitted.
 
-### <a name="issue"></a> Submitting an Issue
+### <a name="issues"></a> Submitting an Issue
 
 Before you submit an issue, please search the issue tracker if your problem may already exist. If a ticket already covers your case, please refrain from opening a new ticket and instead contribute to the existing ticket. If you submit an issue, please provide the required information and reproduction steps. We need those to be able to try and reproduce the bug ourselves. Without proper instructions on how to reproduce the issue you are encountering, we might be unable to fix a possible bug.
 
