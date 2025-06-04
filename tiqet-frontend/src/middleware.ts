@@ -25,7 +25,7 @@ export default async function middleware(request: NextRequest, event: NextFetchE
   if (![
     '/login',
     '/assets/brand/tiqet-logo.png',
-    '/assets/brand/tiqet-logo.svg'
+    '/assets/brand/tiqet-logo.svg',
   ].includes(request.nextUrl.pathname)) {
     const res: NextMiddlewareResult = await withAuth(
       // Response with local cookies

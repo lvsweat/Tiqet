@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer border-top px-sm-2 py-2">
       <Container fluid className="text-center align-items-center flex-column flex-md-row d-flex justify-content-between">
         <div className="ms-md-auto">
-          Find Tiqet's source on&nbsp;
+          Find Tiqet&apos;s source on&nbsp;
           <a
             className="text-decoration-none"
             href="https://github.com/lvsweat/Tiqet"

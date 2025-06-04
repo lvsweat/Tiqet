@@ -12,42 +12,38 @@ import {
   PointElement,
   Tooltip,
 } from 'chart.js'
-import useDictionary from '@/locales/dictionary-hook'
 import useComputedStyle from '@/hooks/use-computed-style'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
-const random = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min)
-
 function getMonthHistory() {
-  return ['November', 'December', 'January', 'February', 'March', 'April', 'May'];
+  return ['November', 'December', 'January', 'February', 'March', 'April', 'May']
 }
 
 function getTicketHistory() {
-  return [52, 28, 32, 84, 51, 55, 73];
+  return [52, 28, 32, 84, 51, 55, 73]
 }
 
 function getResolvedTicketHistory() {
-  return [50, 30, 27, 84, 52, 50, 62];
+  return [50, 30, 27, 84, 52, 50, 62]
 }
 
 function getAcceptTimeHistory() {
-  return [18, 15, 8, 3, 5, 4, 2];
+  return [18, 15, 8, 3, 5, 4, 2]
 }
 
 function getTTRTimeHistory() {
-  return [45, 34, 12, 35, 23, 58, 38];
+  return [45, 34, 12, 35, 23, 58, 38]
 }
 
 export default function AllStatsChartCard() {
-  const dict = useDictionary()
   const borderColor = useComputedStyle('--bs-border-color')
   const bodyColor = useComputedStyle('--bs-body-color')
-  const monthHistory = getMonthHistory();
-  const ticketHistory = getTicketHistory();
-  const resTicketHistory = getResolvedTicketHistory();
-  const acceptTimeHistory = getAcceptTimeHistory();
-  const tTRTimeHistory = getTTRTimeHistory();
+  const monthHistory = getMonthHistory()
+  const ticketHistory = getTicketHistory()
+  const resTicketHistory = getResolvedTicketHistory()
+  const acceptTimeHistory = getAcceptTimeHistory()
+  const tTRTimeHistory = getTTRTimeHistory()
 
   return (
     <Line

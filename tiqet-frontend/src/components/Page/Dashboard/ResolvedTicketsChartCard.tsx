@@ -14,17 +14,8 @@ import {
 } from 'chart.js'
 
 import {
-  Button,
-  ButtonGroup,
   Card,
   CardBody,
-  CardFooter,
-  CardHeader,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  ProgressBar,
 } from 'react-bootstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -36,23 +27,23 @@ import {
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
 function getMonthHistory() {
-  return ['November', 'December', 'January', 'February', 'March', 'April', 'May'];
+  return ['November', 'December', 'January', 'February', 'March', 'April', 'May']
 }
 
 function getTicketHistory() {
-  return [50, 30, 27, 84, 52, 50, 62];
+  return [50, 30, 27, 84, 52, 50, 62]
 }
 
 interface Props {
   dict: any;
 }
 
-export default function ResolvedTicketsChartCard({dict}: Props) {
-  const monthHistory = getMonthHistory();
-  const ticketHistory = getTicketHistory();
-  const currentTicketCount = ticketHistory[ticketHistory.length - 1];
-  const lastMonthsTickets = ticketHistory[ticketHistory.length - 2];
-  const difPercentage = Math.round(((currentTicketCount - lastMonthsTickets) / lastMonthsTickets) * 10000) / 100;
+export default function ResolvedTicketsChartCard({ dict }: Props) {
+  const monthHistory = getMonthHistory()
+  const ticketHistory = getTicketHistory()
+  const currentTicketCount = ticketHistory[ticketHistory.length - 1]
+  const lastMonthsTickets = ticketHistory[ticketHistory.length - 2]
+  const difPercentage = Math.round(((currentTicketCount - lastMonthsTickets) / lastMonthsTickets) * 10000) / 100
   return (
     <Card bg="success" text="white" className="mb-4">
       <CardBody className="pb-0 d-flex justify-content-between align-items-start">
@@ -60,7 +51,9 @@ export default function ResolvedTicketsChartCard({dict}: Props) {
           <div className="fs-4 fw-semibold">
             {currentTicketCount}
             <span className="fs-6 ms-2 fw-normal">
-              ({difPercentage}%
+              (
+              {difPercentage}
+              %
               {difPercentage > 0 ? <FontAwesomeIcon icon={faArrowUp} fixedWidth /> : <FontAwesomeIcon icon={faArrowDown} fixedWidth />}
               )
             </span>

@@ -1,38 +1,14 @@
-import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faArrowDown,
-  faArrowUp,
   faDownload,
-  faEllipsisVertical,
-  faMars,
-  faSearch,
-  faUsers,
-  faVenus,
 } from '@fortawesome/free-solid-svg-icons'
 import {
   Button,
-  ButtonGroup,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
   ProgressBar,
 } from 'react-bootstrap'
-import {
-  faCcAmex,
-  faCcApplePay,
-  faCcPaypal,
-  faCcStripe,
-  faCcVisa,
-  faFacebookF,
-  faLinkedinIn,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons'
 import React from 'react'
 import TicketsChartCard from '@/components/Page/Dashboard/TicketsChartCard'
 import AcceptanceChartCard from '@/components/Page/Dashboard/AcceptanceChartCard'
@@ -42,17 +18,17 @@ import AllStatsChartCard from '@/components/Page/Dashboard/AllStatsChartCard'
 import { getDictionary } from '@/locales/dictionary'
 
 export const metadata = {
-  title: "Dashboard | Tiqet",
-  description: "The main Tiqet dashboard"
+  title: 'Dashboard | Tiqet',
+  description: 'The main Tiqet dashboard',
 }
 
 function getMonthHistory() {
-  return ['November', 'December', 'January', 'February', 'March', 'April', 'May'];
+  return ['November', 'December', 'January', 'February', 'March', 'April', 'May']
 }
 
 export default async function Page() {
   const dict = await getDictionary()
-  const monthHistory = getMonthHistory();
+  const monthHistory = getMonthHistory()
 
   return (
     <div>
@@ -62,7 +38,7 @@ export default async function Page() {
         </div>
 
         <div className="col-sm-6 col-lg-3">
-          <ResolvedTicketsChartCard dict={dict}/>
+          <ResolvedTicketsChartCard dict={dict} />
         </div>
 
         <div className="col-sm-6 col-lg-3">
@@ -79,7 +55,15 @@ export default async function Page() {
           <div className="d-flex justify-content-between">
             <div>
               <h4 className="mb-0">{dict.dashboard.all_stats.title}</h4>
-              <div className="small text-black-50 dark:text-gray-500">{monthHistory[0]} - {monthHistory[monthHistory.length - 1]} {new Date().getFullYear()}</div>
+              <div className="small text-black-50 dark:text-gray-500">
+                {monthHistory[0]}
+                {' '}
+                -
+                {' '}
+                {monthHistory[monthHistory.length - 1]}
+                {' '}
+                {new Date().getFullYear()}
+              </div>
             </div>
             <div className="d-none d-md-block">
               <Button variant="primary">

@@ -14,16 +14,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faAddressCard,
   faBell,
-  faCreditCard,
-  faEnvelopeOpen,
-  faFile,
-  faMessage,
-  faUser,
 } from '@fortawesome/free-regular-svg-icons'
 import { PropsWithChildren } from 'react'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import {
-  faGear, faListCheck, faLock, faPowerOff,
+  faGear, faPowerOff,
 } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 import HeaderLogout from '@/components/Layout/Dashboard/Header/HeaderLogout'
@@ -60,7 +55,7 @@ export default async function HeaderProfileNav() {
                 fill
                 sizes="32px"
                 className="rounded-circle"
-                src={session.user.avatar}
+                src={session.user.email}
                 alt={session.user.email}
               />
             )}

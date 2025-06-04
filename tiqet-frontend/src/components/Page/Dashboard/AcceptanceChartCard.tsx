@@ -14,56 +14,49 @@ import {
 } from 'chart.js'
 
 import {
-  Button,
-  ButtonGroup,
   Card,
   CardBody,
-  CardFooter,
-  CardHeader,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  ProgressBar,
 } from 'react-bootstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faArrowDown,
   faArrowUp,
-  faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Tooltip, Filler)
 
 function getMonthHistory() {
-  return ['November', 'December', 'January', 'February', 'March', 'April', 'May'];
+  return ['November', 'December', 'January', 'February', 'March', 'April', 'May']
 }
 
 function getTimeHistory() {
-  return [18, 15, 8, 3, 5, 4, 2];
+  return [18, 15, 8, 3, 5, 4, 2]
 }
 
 interface Props {
   dict: any;
 }
 
-export default function AcceptanceChartCard({dict}: Props) {
-  const monthHistory = getMonthHistory();
-  const timeHistory = getTimeHistory();
-  const currentAcceptanceTime = timeHistory[timeHistory.length - 1];
-  const lastMonthsTime = timeHistory[timeHistory.length - 2];
-  const difPercentage = Math.round(((currentAcceptanceTime - lastMonthsTime) / lastMonthsTime) * 10000) / 100;
+export default function AcceptanceChartCard({ dict }: Props) {
+  const monthHistory = getMonthHistory()
+  const timeHistory = getTimeHistory()
+  const currentAcceptanceTime = timeHistory[timeHistory.length - 1]
+  const lastMonthsTime = timeHistory[timeHistory.length - 2]
+  const difPercentage = Math.round(((currentAcceptanceTime - lastMonthsTime) / lastMonthsTime) * 10000) / 100
   return (
     <Card bg="warning" text="white" className="mb-4">
       <CardBody className="pb-0 d-flex justify-content-between align-items-start">
         <div>
           <div className="fs-4 fw-semibold">
-            {currentAcceptanceTime}min
+            {currentAcceptanceTime}
+            min
             <span className="fs-6 ms-2 fw-normal">
-              ({difPercentage}%
+              (
+              {difPercentage}
+              %
               {difPercentage > 0 ? <FontAwesomeIcon icon={faArrowUp} fixedWidth /> : <FontAwesomeIcon icon={faArrowDown} fixedWidth />}
-              
+
               )
             </span>
           </div>

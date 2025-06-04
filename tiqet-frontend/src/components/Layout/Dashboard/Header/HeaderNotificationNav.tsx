@@ -1,16 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faEnvelope, IconDefinition } from '@fortawesome/free-regular-svg-icons'
+import { faBell, IconDefinition } from '@fortawesome/free-regular-svg-icons'
 import {
   faBasketShopping,
   faChartBar,
   faGaugeHigh,
-  faList,
   faUserMinus,
   faUserPlus,
 } from '@fortawesome/free-solid-svg-icons'
 import {
   Badge,
-  Dropdown, DropdownDivider,
+  Dropdown,
   DropdownHeader,
   DropdownItem,
   DropdownMenu,
@@ -22,7 +21,6 @@ import {
 } from 'react-bootstrap'
 import Link from 'next/link'
 import React, { PropsWithChildren } from 'react'
-import Image from 'next/image'
 import HeaderLocale from '@/components/Layout/Dashboard/Header/HeaderLocale'
 import { getDictionary, getLocale } from '@/locales/dictionary'
 import HeaderTheme from '@/components/Layout/Dashboard/Header/HeaderTheme'

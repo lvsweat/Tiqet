@@ -1,35 +1,15 @@
 import {
-  faAddressCard, faBell, faClock, faFileLines, faStar,
-  faTimesCircle,
+  faAddressCard,
 } from '@fortawesome/free-regular-svg-icons'
 import {
-  faAreaChart,
-  faBug,
-  faCalculator,
-  faChartBar,
-  faChartDiagram,
-  faChartPie,
-  faCode,
-  faComputer,
-  faDroplet,
-  faGauge,
   faGear,
   faHistory,
-  faLayerGroup,
   faLineChart,
-  faLocationArrow,
-  faPencil,
-  faPerson,
-  faPersonHarassing,
   faPlus,
-  faPuzzlePiece,
   faReceipt,
-  faRightToBracket,
   faTicket,
-  faTimesSquare,
 } from '@fortawesome/free-solid-svg-icons'
 import React, { PropsWithChildren } from 'react'
-import { Badge } from 'react-bootstrap'
 import SidebarNavGroup from '@/components/Layout/Dashboard/Sidebar/SidebarNavGroup'
 import SidebarNavItem from '@/components/Layout/Dashboard/Sidebar/SidebarNavItem'
 import { getDictionary } from '@/locales/dictionary'

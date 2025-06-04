@@ -1,8 +1,7 @@
-import NextAuth, { NextAuthOptions, User } from 'next-auth'
+import { NextAuthOptions, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { getDictionary } from '@/locales/dictionary'
 import serverFetch from '@/utils/server-fetch'
-import { genSalt, hash } from 'bcrypt'
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
@@ -30,18 +29,17 @@ export const authOptions: NextAuthOptions = {
         const { username, password } = credentials
 
         const authResp = await serverFetch(`${process.env.BACKEND_URL}/auth`, {
-          method: 'POST', 
-          body: JSON.stringify({ username: username, password: password})
+          method: 'POST',
+          body: JSON.stringify({ username, password }),
         })
 
         const dict = await getDictionary()
 
-        if (authResp.status == 404) {
+        if (authResp.status === 404) {
           throw new Error(dict.login.message.auth_failed)
+        } else if (authResp.status !== 200) {
+          throw new Error('Something went wrong with the backend!')
         }
-	      else if (authResp.status != 200) {
-	        throw new Error("Something went wrong with the backend!")
-	      }
 
         const userData = await authResp.json()
         return userData.data
