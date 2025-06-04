@@ -8,4 +8,6 @@ RUN go mod download
 COPY . .
 RUN go build -v -o /usr/local/bin ./...
 
+EXPOSE 8080
+
 CMD [ "tiqet-backend" ]
