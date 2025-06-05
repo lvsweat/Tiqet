@@ -8,45 +8,47 @@ import {
 
 import Form from 'react-bootstrap/Form'
 
-interface Props {
-  tags: string[];
+async function submitTicket(formData: FormData) {
+  const availableTags = getTags()
+ const selectedTags: string[] = []
+
+ for (let i = 0; i < availableTags.length; i += 1) {
+   const currentTag = availableTags[i]
+   if (formData.get(currentTag) === 'on') {
+     selectedTags.push(currentTag)
+   }
+ }
+
+ const resp = await fetch(
+   `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets`,
+   {
+      method: 'POST',
+      body: JSON.stringify({
+        title: formData.get('title'),
+        tags: selectedTags,
+        description: formData.get('description'),
+      }),
+      credentials: 'include'
+   },
+ )
+ const jsonData = await resp.json()
+ return jsonData.data
 }
 
-// async function submitTicket(formData: FormData, user: User, tags: string[], backend_url: string) {
-//  console.log('GOT HERE!')
-//  const selectedTags: string[] = []
-//
-//  for (let i = 0; i < tags.length; i += 1) {
-//    const currentTag = tags[i]
-//    if (formData.get(currentTag) === 'on') {
-//      selectedTags.push(currentTag)
-//    }
-//  }
-//
-//  const resp = await fetch(
-//    `${backend_url}/tickets`,
-//    {
-//      method: 'POST',
-//      body: JSON.stringify({
-//        title: formData.get('title'),
-//        tags: selectedTags,
-//        description: formData.get('description'),
-//      }),
-//    },
-//  )
-//  const jsonData = await resp.json()
-//  return jsonData.data
-// }
+function getTags() {
+  return ['Question', 'Hardware', 'Software']
+}
 
-export default function SubmitTicketForm({ tags }: Props) {
-  // const onSubmit = function (event: React.FormEvent<HTMLFormElement>) {
-  //  event.preventDefault()
-  //  const formData = new FormData(event.currentTarget)
-  //  submitTicket(formData, user, tags, backend_url)
-  // }
+export default function SubmitTicketForm() {
+  const tags = getTags()
+  const onSubmit = function (event: React.FormEvent<HTMLFormElement>) {
+   event.preventDefault()
+   const formData = new FormData(event.currentTarget)
+   submitTicket(formData)
+  }
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <Form.Group className="mb-3" controlId="submitTicketForm.title">
         <Form.Label>Title</Form.Label>
         <Form.Control

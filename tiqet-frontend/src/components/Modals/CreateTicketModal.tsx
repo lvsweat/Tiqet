@@ -9,12 +9,7 @@ import {
 
 import SubmitTicketForm from '../Form/SubmitTicketForm'
 
-function getTags() {
-  return ['Question', 'Hardware', 'Software']
-}
-
 export default async function CreateTicketModal() {
-  const tags = getTags()
   return (
     <div className="modal show" style={{ display: 'block', position: 'initial' }}>
       <ModalDialog
@@ -26,7 +21,7 @@ export default async function CreateTicketModal() {
           <ModalTitle>Submit A Ticket</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          <SubmitTicketForm tags={tags} />
+          <SubmitTicketForm />
         </ModalBody>
       </ModalDialog>
     </div>
