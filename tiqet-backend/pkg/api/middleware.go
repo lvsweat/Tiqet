@@ -28,6 +28,7 @@ func AuthMiddleware(c *gin.Context) {
 	})
 
 	if parseErr != nil || !token.Valid {
+		c.SetCookie("token", "", -1, "/", "localhost", false, true)
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"data": nil})
 		c.Abort()
 		return
@@ -38,6 +39,7 @@ func AuthMiddleware(c *gin.Context) {
 		c.Next()
 		return
 	} else {
+		c.SetCookie("token", "", -1, "/", "localhost", false, true)
 		c.IndentedJSON(http.StatusUnauthorized, gin.H{"data": nil})
 		c.Abort()
 		return
