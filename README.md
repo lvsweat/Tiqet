@@ -15,6 +15,6 @@ Contributions to Tiqet are welcome!
 
 - [gorm](https://gorm.io): The easy PostgreSQL backend implementation
 - [gin](https://github.com/gin-gonic/gin): The backend http framework
-- [CoreUI](https://coreui.io/): The wonderful admin dashboard [template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
 - [Next.js/Vercel](https://nextjs.org/): The React framework
+- [kitloong](https://github.com/kitloong) for the wonderful admin dashboard [template](https://github.com/kitloong/nextjs-dashboard)
 - [Mainsail](https://github.com/mainsail-crew/mainsail) and [nayafia](https://github.com/nayafia/contributing-template) for the guidelines for contribution guidelines
