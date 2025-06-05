@@ -41,8 +41,6 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Something went wrong with the backend!')
         }
 
-        
-
         const userData = await authResp.json()
         return userData.data
       },

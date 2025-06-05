@@ -45,8 +45,7 @@ export default async function HeaderProfileNav() {
     <Nav>
       <Dropdown as={NavItem}>
         <DropdownToggle variant="link" bsPrefix="hide-caret" className="py-0 px-2 rounded-0" id="dropdown-profile">
-          <div className="avatar position-relative">
-          </div>
+          <div className="avatar position-relative" />
         </DropdownToggle>
         <DropdownMenu className="pt-0">
           <DropdownHeader className="fw-bold rounded-top">{dict.profile.general.title}</DropdownHeader>

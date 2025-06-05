@@ -8,43 +8,43 @@ import {
 
 import Form from 'react-bootstrap/Form'
 
+function getTags() {
+  return ['Question', 'Hardware', 'Software']
+}
+
 async function submitTicket(formData: FormData) {
   const availableTags = getTags()
- const selectedTags: string[] = []
+  const selectedTags: string[] = []
 
- for (let i = 0; i < availableTags.length; i += 1) {
-   const currentTag = availableTags[i]
-   if (formData.get(currentTag) === 'on') {
-     selectedTags.push(currentTag)
-   }
- }
+  for (let i = 0; i < availableTags.length; i += 1) {
+    const currentTag = availableTags[i]
+    if (formData.get(currentTag) === 'on') {
+      selectedTags.push(currentTag)
+    }
+  }
 
- const resp = await fetch(
-   `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets`,
-   {
+  const resp = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets`,
+    {
       method: 'POST',
       body: JSON.stringify({
         title: formData.get('title'),
         tags: selectedTags,
         description: formData.get('description'),
       }),
-      credentials: 'include'
-   },
- )
- const jsonData = await resp.json()
- return jsonData.data
-}
-
-function getTags() {
-  return ['Question', 'Hardware', 'Software']
+      credentials: 'include',
+    },
+  )
+  const jsonData = await resp.json()
+  return jsonData.data
 }
 
 export default function SubmitTicketForm() {
   const tags = getTags()
-  const onSubmit = function (event: React.FormEvent<HTMLFormElement>) {
-   event.preventDefault()
-   const formData = new FormData(event.currentTarget)
-   submitTicket(formData)
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    submitTicket(formData)
   }
 
   return (

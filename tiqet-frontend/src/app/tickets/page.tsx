@@ -16,14 +16,13 @@ import React, { useEffect, useState } from 'react'
 
 async function getTickets() {
   const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets`, {
-    credentials: "include"
+    credentials: 'include',
   })
   const jsonData = await resp.json()
   return jsonData.data
 }
 
 export default function Page() {
-  
   const [tickets, setTickets] = useState(null as (Array<any> | null))
 
   useEffect(() => {
@@ -37,9 +36,9 @@ export default function Page() {
   if (!tickets) {
     return (
       <div>
-      <h1 className="text-center">Tickets</h1>
-      <h2 className="text-center">Loading...</h2>
-    </div>
+        <h1 className="text-center">Tickets</h1>
+        <h2 className="text-center">Loading...</h2>
+      </div>
     )
   }
   return (

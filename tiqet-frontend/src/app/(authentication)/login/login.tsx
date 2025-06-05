@@ -11,7 +11,7 @@ import InputGroupText from 'react-bootstrap/InputGroupText'
 import { useRouter } from 'next/navigation'
 import useDictionary from '@/locales/dictionary-hook'
 
-export default function Login({ callbackUrl }: { callbackUrl: string }) {
+export default function Login() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
@@ -26,17 +26,16 @@ export default function Login({ callbackUrl }: { callbackUrl: string }) {
       const authResp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth`, {
         method: 'POST',
         body: JSON.stringify({ username, password }),
-        credentials: 'include'
+        credentials: 'include',
       })
-      
+
       if (authResp.status === 404) {
-        throw new Error("Invalid username or password")
+        throw new Error('Invalid username or password')
       } else if (authResp.status !== 200) {
         throw new Error('Something went wrong with the backend!')
       }
-      
-      router.replace("/")
-        
+
+      router.replace('/')
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message)

@@ -1,22 +1,15 @@
-import { NextRequestWithAuth, withAuth } from 'next-auth/middleware'
-import { type NextFetchEvent, NextRequest, NextResponse } from 'next/server'
-import { match } from '@formatjs/intl-localematcher'
-import Negotiator from 'negotiator'
-import { NextMiddlewareResult } from 'next/dist/server/web/types'
-import { getLocales } from '@/locales/dictionary'
-import { defaultLocale } from '@/locales/config'
+import { NextRequest, NextResponse } from 'next/server'
 
-export default async function middleware(request: NextRequest, event: NextFetchEvent) {
-
+export default async function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value
 
-  if ('/login' === request.nextUrl.pathname) {
+  if (request.nextUrl.pathname === '/login') {
     if (token) {
       const cookie = request.headers.get('cookie')!
       const userResp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`, {
         headers: {
-          cookie
-        }
+          cookie,
+        },
       })
 
       if (userResp.status === 200) {
@@ -26,12 +19,11 @@ export default async function middleware(request: NextRequest, event: NextFetchE
       const invalidTokenResp = NextResponse.next()
       invalidTokenResp.cookies.set('token', '', {
         expires: new Date(0),
-        path: '/'
+        path: '/',
       })
       return invalidTokenResp
     }
   }
- 
 
   if (![
     '/login',

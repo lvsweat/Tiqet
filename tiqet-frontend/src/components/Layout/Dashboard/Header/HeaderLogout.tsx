@@ -1,6 +1,6 @@
 'use client'
 
-import logOut from "@/utils/logout"
+import logOut from '@/utils/logout'
 
 export default function HeaderLogout({ children }: { children: React.ReactNode }) {
   const logout = async () => {
