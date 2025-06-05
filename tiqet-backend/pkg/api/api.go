@@ -13,7 +13,7 @@ var engine *gin.Engine
 
 func EstablishEndpoints() {
 	engine.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{os.Getenv("FRONTEND_URL")}, // Frontend URL
+		AllowOrigins:     []string{os.Getenv("CORS_ALLOW_ORIGIN")}, // Origin for CORS to allow. Configured in .env.backend
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		AllowCredentials: true,
