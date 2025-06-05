@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Button,
   Card,
@@ -10,37 +12,36 @@ import {
   Col,
   Badge,
 } from 'react-bootstrap'
-import React from 'react'
-import serverFetch from '@/utils/server-fetch'
-import jwt from 'jsonwebtoken'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '../api/auth/option'
-
-export const metadata = {
-  title: 'Tickets | Tiqet',
-  description: 'Where you find all your open tickets!',
-}
+import React, { useEffect, useState } from 'react'
 
 async function getTickets() {
-  const user = await getServerSession(authOptions)
-  const jwtToken = jwt.sign({
-    userId: user?.user.ID,
-  }, process.env.TIQET_JWT_SECRET!)
-
-  const resp = await serverFetch(
-    `${process.env.BACKEND_URL}/tickets`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    },
-  )
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets`, {
+    credentials: "include"
+  })
   const jsonData = await resp.json()
   return jsonData.data
 }
 
-export default async function Page() {
-  const tickets = await getTickets()
+export default function Page() {
+  
+  const [tickets, setTickets] = useState(null as (Array<any> | null))
+
+  useEffect(() => {
+    const loadTickets = async () => {
+      setTickets(await getTickets())
+    }
+
+    loadTickets()
+  }, [])
+
+  if (!tickets) {
+    return (
+      <div>
+      <h1 className="text-center">Tickets</h1>
+      <h2 className="text-center">Loading...</h2>
+    </div>
+    )
+  }
   return (
     <div>
       <h1 className="text-center">Tickets</h1>

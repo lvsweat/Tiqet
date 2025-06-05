@@ -7,6 +7,11 @@ import SidebarNav from '@/components/Layout/Dashboard/Sidebar/SidebarNav'
 import Header from '@/components/Layout/Dashboard/Header/Header'
 import Footer from '@/components/Layout/Dashboard/Footer/Footer'
 
+export const metadata = {
+  title: 'Tickets | Tiqet',
+  description: 'Where you find all your open tickets!',
+}
+
 export default function Layout({
   children,
 }: {
