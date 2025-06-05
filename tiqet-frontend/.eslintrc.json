@@ -44,6 +44,7 @@
     ],
     // Since we do not use prop-types
     "react/require-default-props": 0,
+    "react/jsx-no-useless-fragment": 0,
     "react/jsx-key": 0,
     // Use semicolon as member delimiter for interfaces and type
     "max-len": 0,
