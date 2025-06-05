@@ -1,6 +1,5 @@
 import { Col, Row } from 'react-bootstrap'
 import LoginForm from '@/app/(authentication)/login/login'
-import { SearchParams } from '@/types/next'
 import { getDictionary } from '@/locales/dictionary'
 
 export const metadata = {
@@ -8,17 +7,8 @@ export const metadata = {
   description: 'Login to your local Tiqet account',
 }
 
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const { callbackUrl } = searchParams
+export default async function Page() {
   const dict = await getDictionary()
-
-  const getCallbackUrl = () => {
-    if (!callbackUrl) {
-      return '/' // Default redirect to home page
-    }
-
-    return callbackUrl.toString()
-  }
 
   return (
     <Row className="justify-content-center align-items-center px-3">
@@ -29,7 +19,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
               <h1>{dict.login.title}</h1>
               <p className="text-black-50 dark:text-gray-500">{dict.login.description}</p>
 
-              <LoginForm callbackUrl={getCallbackUrl()} />
+              <LoginForm />
             </div>
           </Col>
           <Col
