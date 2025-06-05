@@ -8,7 +8,6 @@ import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import InputGroupText from 'react-bootstrap/InputGroupText'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import useDictionary from '@/locales/dictionary-hook'
 
@@ -22,33 +21,22 @@ export default function Login({ callbackUrl }: { callbackUrl: string }) {
     setSubmitting(true)
 
     try {
-      const res = await signIn('credentials', {
-        username: formData.get('username'),
-        password: formData.get('password'),
-        redirect: false,
-        callbackUrl,
+      const username = formData.get('username')
+      const password = formData.get('password')
+      const authResp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth`, {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        credentials: 'include'
       })
-
-      if (!res) {
-        setError('Login failed')
-        return
+      
+      if (authResp.status === 404) {
+        throw new Error("Invalid username or password")
+      } else if (authResp.status !== 200) {
+        throw new Error('Something went wrong with the backend!')
       }
-
-      const { ok, url, error: err } = res
-
-      if (!ok) {
-        if (err) {
-          setError(err)
-          return
-        }
-
-        setError('Login failed')
-        return
-      }
-
-      if (url) {
-        router.push(url)
-      }
+      
+      router.replace("/")
+        
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message)

@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
         }
         const { username, password } = credentials
 
-        const authResp = await serverFetch(`${process.env.BACKEND_URL}/auth`, {
+        const authResp = await serverFetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth`, {
           method: 'POST',
           body: JSON.stringify({ username, password }),
         })
@@ -40,6 +40,8 @@ export const authOptions: NextAuthOptions = {
         } else if (authResp.status !== 200) {
           throw new Error('Something went wrong with the backend!')
         }
+
+        
 
         const userData = await authResp.json()
         return userData.data
