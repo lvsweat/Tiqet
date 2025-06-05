@@ -1,10 +1,10 @@
 'use client'
 
-import { signOut } from 'next-auth/react'
+import logOut from "@/utils/logout"
 
 export default function HeaderLogout({ children }: { children: React.ReactNode }) {
   const logout = async () => {
-    await signOut({ callbackUrl: '/login' })
+    await logOut()
   }
 
   return (
