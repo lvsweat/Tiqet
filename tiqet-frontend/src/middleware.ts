@@ -7,38 +7,40 @@ import { getLocales } from '@/locales/dictionary'
 import { defaultLocale } from '@/locales/config'
 
 export default async function middleware(request: NextRequest, event: NextFetchEvent) {
-  const headers = { 'accept-language': request.headers.get('accept-language') ?? '' }
-  const languages = new Negotiator({ headers }).languages()
-  const locales = getLocales()
 
-  const locale = match(languages, locales, defaultLocale)
-  const response = NextResponse.next()
-  if (!request.cookies.get('locale')) {
-    response.cookies.set('locale', locale)
+  const token = request.cookies.get('token')?.value
+
+  if ('/login' === request.nextUrl.pathname) {
+    if (token) {
+      const cookie = request.headers.get('cookie')!
+      const userResp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`, {
+        headers: {
+          cookie
+        }
+      })
+
+      if (userResp.status === 200) {
+        return NextResponse.redirect(new URL('/', request.url))
+      }
+
+      const invalidTokenResp = NextResponse.next()
+      invalidTokenResp.cookies.set('token', '', {
+        expires: new Date(0),
+        path: '/'
+      })
+      return invalidTokenResp
+    }
   }
+ 
 
-  /*
-   * Match all request paths except for the ones starting with:
-   * - login
-   * - register
-   */
   if (![
     '/login',
-    '/assets/brand/tiqet-logo.png',
-    '/assets/brand/tiqet-logo.svg',
-  ].includes(request.nextUrl.pathname)) {
-    const res: NextMiddlewareResult = await withAuth(
-      // Response with local cookies
-      () => response,
-      {
-      // Matches the pages config in `[...nextauth]`
-        pages: {
-          signIn: '/login',
-        },
-      },
-    )(request as NextRequestWithAuth, event)
-    return res
+    '/favicon.ico',
+  ].includes(request.nextUrl.pathname) && !request.nextUrl.pathname.startsWith('/_next/static/')) {
+    if (!token) {
+      return NextResponse.redirect(new URL('/login', request.url))
+    }
   }
 
-  return response
+  return NextResponse.next()
 }
