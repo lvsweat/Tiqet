@@ -9,12 +9,38 @@ function getRoles(): string[] {
   return ['Admin', 'Support', 'User']
 }
 
+async function submitTag(formData: FormData) {
+  const availableRoles = getRoles()
+  const selectedRoles: string[] = []
+
+  for (let i = 0; i < availableRoles.length; i += 1) {
+    const currentRole = availableRoles[i]
+    if (formData.get(currentRole) === 'on') {
+      selectedRoles.push(currentRole)
+    }
+  }
+
+  const resp = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tags`,
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        name: formData.get('name'),
+        roles: selectedRoles,
+      }),
+      credentials: 'include',
+    },
+  )
+  const jsonData = await resp.json()
+  return jsonData.data
+}
+
 export default function CreateTagModal() {
   const roles = getRoles()
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // const formData = new FormData(event.currentTarget)
-    // submitTicket(formData)
+    const formData = new FormData(event.currentTarget)
+    submitTag(formData)
   }
 
   return (
