@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/lvsweat/Tiqet/tiqet-backend/pkg/api/endpoints"
 )
 
 var engine *gin.Engine
@@ -20,14 +21,14 @@ func EstablishEndpoints() {
 		MaxAge:           2 * time.Hour,
 	}))
 
-	engine.POST("/auth", AuthenticateUserEndpoint)
-	engine.GET("/user/:id", GetUserByIDEndpoint)
+	engine.POST("/auth", endpoints.AuthenticateUserEndpoint)
+	engine.GET("/user/:id", endpoints.GetUserByIDEndpoint)
 	engine.Use(AuthMiddleware)
 	{
-		engine.GET("/user", GetUserEndpoint)
-		engine.POST("/users", PostUsersEndpoint)
-		engine.GET("/tickets", GetTicketsEndpoint)
-		engine.POST("/tickets", PostTicketEndpoint)
+		engine.GET("/user", endpoints.GetUserEndpoint)
+		engine.POST("/users", endpoints.PostUsersEndpoint)
+		engine.GET("/tickets", endpoints.GetTicketsEndpoint)
+		engine.POST("/tickets", endpoints.PostTicketsEndpoint)
 	}
 }
 
