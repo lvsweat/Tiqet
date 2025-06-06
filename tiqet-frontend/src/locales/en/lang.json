@@ -188,6 +188,7 @@
   "sidebar": {
     "items": {
       "dashboard": "Dashboard",
+      "admin": "Admin Panel",
       "general": "General",
       "tickets": "Tickets",
       "tickets_items": {

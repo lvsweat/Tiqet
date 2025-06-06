@@ -1,7 +1,10 @@
+'use server'
+
 import {
   faAddressCard,
 } from '@fortawesome/free-regular-svg-icons'
 import {
+  faDollarSign,
   faGear,
   faHistory,
   faLineChart,
@@ -13,6 +16,9 @@ import React, { PropsWithChildren } from 'react'
 import SidebarNavGroup from '@/components/Layout/Dashboard/Sidebar/SidebarNavGroup'
 import SidebarNavItem from '@/components/Layout/Dashboard/Sidebar/SidebarNavItem'
 import { getDictionary } from '@/locales/dictionary'
+import { verify } from 'jsonwebtoken'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 const SidebarNavTitle = (props: PropsWithChildren) => {
   const { children } = props
@@ -24,11 +30,27 @@ const SidebarNavTitle = (props: PropsWithChildren) => {
 
 export default async function SidebarNav() {
   const dict = await getDictionary()
+  const token = cookies().get('token')!.value
+  let isAdmin = false
+  if (!token) {
+    redirect('/login')
+  } else {
+    verify(token, process.env.TIQET_JWT_SECRET!, (err, decoded: any) => {
+      if (err) {
+        redirect('/login')
+      } else {
+        const roles = decoded.roles as string[]
+        isAdmin = roles.includes('Admin')
+      }
+    }) as any
+  }
+
   return (
     <ul className="list-unstyled">
       <SidebarNavItem icon={faLineChart} href="/">{dict.sidebar.items.dashboard}</SidebarNavItem>
-      <SidebarNavTitle>{dict.sidebar.items.general}</SidebarNavTitle>
+      {isAdmin ? <SidebarNavItem icon={faDollarSign} href="/admin">{dict.sidebar.items.admin}</SidebarNavItem> : <></>}
 
+      <SidebarNavTitle>{dict.sidebar.items.general}</SidebarNavTitle>
       <SidebarNavGroup toggleIcon={faTicket} toggleText={dict.sidebar.items.tickets}>
         <SidebarNavItem icon={faReceipt} href="/tickets">{dict.sidebar.items.tickets_items.open_tickets}</SidebarNavItem>
         <SidebarNavItem icon={faPlus} href="/tickets/create">{dict.sidebar.items.tickets_items.submit_ticket}</SidebarNavItem>
