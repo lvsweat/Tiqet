@@ -23,7 +23,7 @@ async function submitUser(formData: FormData) {
   }
 
   const resp = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/roles`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/users`,
     {
       method: 'POST',
       body: JSON.stringify({
