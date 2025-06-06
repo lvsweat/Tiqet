@@ -36,6 +36,7 @@ func AuthMiddleware(c *gin.Context) {
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok {
 		c.Set("authedId", claims["sub"])
+		c.Set("authedRoles", claims["roles"])
 		c.Next()
 		return
 	} else {

@@ -10,6 +10,14 @@ type LoginAttempt struct {
 	Password string `json:"password"`
 }
 
+type NewUser struct {
+	Name string
+	Roles pq.StringArray
+	Email string
+	Username string
+	Password string
+}
+
 type Login struct {
 	gorm.Model
 	ID uint32 `gorm:"type:integer;not null;unique;primary_key"`
@@ -20,7 +28,7 @@ type Login struct {
 
 type User struct {
 	gorm.Model
-	ID uint32 `gorm:"type:integer;not null;unique;primary_key" json:"ID"`
+	ID uint32 `gorm:"type:integer;not null;unique;primary_key"`
 	Name string `gorm:"type:text;not null" json:"name"`
 	Email string `gorm:"type:text;not null" json:"email"`
 	Username string `gorm:"type:text;not null" json:"username"`
@@ -29,7 +37,7 @@ type User struct {
 
 type Ticket struct {
 	gorm.Model
-	ID uint32 `gorm:"type:integer;not null;unique;primary_key" json:"id"`
+	ID uint32 `gorm:"type:integer;not null;unique;primary_key"`
 	Title string `gorm:"type:text;not null" json:"title"`
 	Description string `gorm:"type:text;not null" json:"description"`
 	Tags pq.StringArray `gorm:"type:text[];not null" json:"tags"`

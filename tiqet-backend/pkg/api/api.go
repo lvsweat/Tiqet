@@ -25,6 +25,7 @@ func EstablishEndpoints() {
 	engine.Use(AuthMiddleware)
 	{
 		engine.GET("/user", GetUserEndpoint)
+		engine.POST("/users", PostUsersEndpoint)
 		engine.GET("/tickets", GetTicketsEndpoint)
 		engine.POST("/tickets", PostTicketEndpoint)
 	}
