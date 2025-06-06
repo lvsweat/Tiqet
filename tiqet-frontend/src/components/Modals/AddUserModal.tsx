@@ -97,7 +97,7 @@ export default function AddUserModal() {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 required
-                name="name"
+                name="username"
                 type="text"
                 placeholder="Username (ex. jdoe)"
                 autoFocus
@@ -107,7 +107,7 @@ export default function AddUserModal() {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 required
-                name="name"
+                name="password"
                 type="text"
                 placeholder="Password (be smart.)"
                 autoFocus
