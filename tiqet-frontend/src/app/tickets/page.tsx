@@ -51,8 +51,7 @@ export default function Page() {
             <Card bg="secondary" className="mb-4">
               <CardBody>
                 <CardHeader>
-                  Ticket #
-                  {item.id}
+                  Ticket #{item.ID}
                 </CardHeader>
                 <CardHeader>
                   {item.tags.map((tag: string) => (
