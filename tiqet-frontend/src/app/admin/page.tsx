@@ -4,8 +4,8 @@ import CreateTagModal from '@/components/Modals/CreateTagModal'
 
 export default async function Page() {
   return (
-    <div>
-      <h1 className="text-center">Admin Panel</h1>
+    <>
+      <h2 className="text-center">Admin Panel</h2>
       <div className="row">
         <div className="col-sm-6 col-lg-3">
           <AddUserModal />
@@ -14,6 +14,6 @@ export default async function Page() {
           <CreateTagModal />
         </div>
       </div>
-    </div>
+    </>
   )
 }
