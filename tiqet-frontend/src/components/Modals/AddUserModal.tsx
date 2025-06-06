@@ -3,7 +3,9 @@
 import React from 'react'
 
 import Form from 'react-bootstrap/Form'
-import { Button, Card, CardBody, CardHeader } from 'react-bootstrap'
+import {
+  Button, Card, CardBody, CardHeader,
+} from 'react-bootstrap'
 
 function getRoles(): string[] {
   return ['Admin', 'Support', 'User']

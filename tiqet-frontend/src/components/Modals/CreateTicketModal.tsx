@@ -45,12 +45,12 @@ async function submitTicket(formData: FormData, tags: any[]) {
 export default function CreateTicketModal() {
   const [tags, setTags] = useState(null as (string[] | null))
   useEffect(() => {
-      const loadTickets = async () => {
-        setTags(await getTags())
-      }
-  
-      loadTickets()
-    }, [])
+    const loadTickets = async () => {
+      setTags(await getTags())
+    }
+
+    loadTickets()
+  }, [])
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
@@ -60,7 +60,7 @@ export default function CreateTicketModal() {
   if (!tags) {
     return (
       <>
-        <h2 className='text-center'>Submit A Ticket</h2>
+        <h2 className="text-center">Submit A Ticket</h2>
         <Form onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="submitTicketForm.title">
             <Form.Label>Title</Form.Label>
@@ -74,7 +74,7 @@ export default function CreateTicketModal() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="submitTicketForm.tags">
             <Form.Label>Tags</Form.Label>
-            <br/>
+            <br />
             <Spinner animation="border" role="status">
               <span className="visually-hidden">Loading...</span>
             </Spinner>
@@ -87,7 +87,7 @@ export default function CreateTicketModal() {
             <Form.Control required name="description" as="textarea" placeholder="Enter details about your issue here. How it happened, what is currently happening, steps to reproduce, anything you can provide." rows={6} />
           </Form.Group>
           <Form.Group>
-            <Placeholder.Button xs={1}/>
+            <Placeholder.Button xs={1} />
           </Form.Group>
         </Form>
       </>
@@ -96,7 +96,7 @@ export default function CreateTicketModal() {
 
   return (
     <>
-      <h2 className='text-center'>Submit A Ticket</h2>
+      <h2 className="text-center">Submit A Ticket</h2>
       <Form onSubmit={onSubmit}>
         <Form.Group className="mb-3" controlId="submitTicketForm.title">
           <Form.Label>Title</Form.Label>
