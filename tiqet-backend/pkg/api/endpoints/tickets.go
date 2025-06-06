@@ -40,9 +40,9 @@ func PostTicketsEndpoint(c *gin.Context) {
 		return
 	}
 
-	getTicketsErr := utils.PostTicket(authedUser, newTicket)
+	postTicketsErr := utils.PostTicket(authedUser, newTicket)
 
-	switch getTicketsErr {
+	switch postTicketsErr {
 	case 0:
 		c.IndentedJSON(http.StatusOK, gin.H{"data": "Successfully submited new ticket!"})
 		return
