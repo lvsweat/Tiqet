@@ -2,10 +2,8 @@
 
 import React from 'react'
 
-import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-
-import { Button } from 'react-bootstrap'
+import { Button, Card, CardBody, CardHeader } from 'react-bootstrap'
 
 function getRoles(): string[] {
   return ['Admin', 'Support', 'User']
@@ -50,75 +48,69 @@ export default function AddUserModal() {
   const roles = getRoles()
 
   return (
-    <div className="modal show" style={{ display: 'block', position: 'initial' }}>
-      <Modal.Dialog
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header>
-          <Modal.Title>Add User</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="addUserForm.name">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                required
-                name="name"
-                type="text"
-                placeholder="Full name (ex. John Doe)"
-                autoFocus
+    <Card>
+      <CardHeader>
+        Add New User
+      </CardHeader>
+      <CardBody>
+        <Form onSubmit={onSubmit}>
+          <Form.Group className="mb-3" controlId="addUserForm.name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              required
+              name="name"
+              type="text"
+              placeholder="Full name (ex. John Doe)"
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="addUserForm.roles">
+            <Form.Label>Roles</Form.Label>
+            {roles.map((role) => (
+              <Form.Check
+                type="checkbox"
+                name={role}
+                key={role}
+                id={role}
+                label={role}
               />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="addUserForm.roles">
-              <Form.Label>Roles</Form.Label>
-              {roles.map((role) => (
-                <Form.Check
-                  type="checkbox"
-                  name={role}
-                  key={role}
-                  id={role}
-                  label={role}
-                />
-              ))}
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="addUserForm.email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                required
-                name="email"
-                type="email"
-                placeholder="Email (ex. jdoe@company.com)"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="addUserForm.username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                required
-                name="username"
-                type="text"
-                placeholder="Username (ex. jdoe)"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="addUserForm.password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                required
-                name="password"
-                type="text"
-                placeholder="Password (be smart.)"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group>
-              <Button type="submit">Submit</Button>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-      </Modal.Dialog>
-    </div>
+            ))}
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="addUserForm.email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              required
+              name="email"
+              type="email"
+              placeholder="Email (ex. jdoe@company.com)"
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="addUserForm.username">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              required
+              name="username"
+              type="text"
+              placeholder="Username (ex. jdoe)"
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="addUserForm.password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              name="password"
+              type="text"
+              placeholder="Password (be smart.)"
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group>
+            <Button type="submit">Submit</Button>
+          </Form.Group>
+        </Form>
+      </CardBody>
+    </Card>
   )
 }

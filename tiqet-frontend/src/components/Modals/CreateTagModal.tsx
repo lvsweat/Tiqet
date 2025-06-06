@@ -2,10 +2,8 @@
 
 import React from 'react'
 
-import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-
-import { Button } from 'react-bootstrap'
+import { Button, Card, CardBody, CardHeader } from 'react-bootstrap'
 
 function getRoles(): string[] {
   return ['Admin', 'Support', 'User']
@@ -20,24 +18,19 @@ export default function CreateTagModal() {
   }
 
   return (
-    <div className="modal show" style={{ display: 'block', position: 'initial' }}>
-      <Modal.Dialog
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header>
-          <Modal.Title>Create Tag</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+    <Card>
+      <CardHeader>
+        Create New Tag
+      </CardHeader>
+      <CardBody>
           <Form onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="createTagForm.name">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 required
-                name="title"
+                name="name"
                 type="text"
-                placeholder="Name of the new tag"
+                placeholder="New tag name (eg. Software)"
                 autoFocus
               />
             </Form.Group>
@@ -57,8 +50,7 @@ export default function CreateTagModal() {
               <Button type="submit">Submit</Button>
             </Form.Group>
           </Form>
-        </Modal.Body>
-      </Modal.Dialog>
-    </div>
+      </CardBody>
+    </Card>
   )
 }
