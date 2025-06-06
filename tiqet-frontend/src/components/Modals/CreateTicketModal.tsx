@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 
 import { Button } from 'react-bootstrap'
@@ -47,52 +46,42 @@ export default function CreateTicketModal() {
   }
 
   return (
-    <div className="modal show" style={{ display: 'block', position: 'initial' }}>
-      <Modal.Dialog
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header>
-          <Modal.Title>Submit A Ticket</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="submitTicketForm.title">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                required
-                name="title"
-                type="text"
-                placeholder="TLDR title of your issue"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="submitTicketForm.tags">
-              <Form.Label>Tags</Form.Label>
-              {tags.map((tag) => (
-                <Form.Check
-                  type="checkbox"
-                  name={tag}
-                  key={tag}
-                  id={tag}
-                  label={tag}
-                />
-              ))}
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="submitTicketForm.description"
-            >
-              <Form.Label>Description</Form.Label>
-              <Form.Control required name="description" as="textarea" placeholder="Enter details about your issue here. How it happened, what is currently happening, steps to reproduce, anything you can provide." rows={6} />
-            </Form.Group>
-            <Form.Group>
-              <Button type="submit">Submit</Button>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-      </Modal.Dialog>
-    </div>
+    <>
+      <h2 className='text-center'>Submit A Ticket</h2>
+      <Form onSubmit={onSubmit}>
+        <Form.Group className="mb-3" controlId="submitTicketForm.title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            required
+            name="title"
+            type="text"
+            placeholder="TLDR title of your issue"
+            autoFocus
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="submitTicketForm.tags">
+          <Form.Label>Tags</Form.Label>
+          {tags.map((tag) => (
+            <Form.Check
+              type="checkbox"
+              name={tag}
+              key={tag}
+              id={tag}
+              label={tag}
+            />
+          ))}
+        </Form.Group>
+        <Form.Group
+          className="mb-3"
+          controlId="submitTicketForm.description"
+        >
+          <Form.Label>Description</Form.Label>
+          <Form.Control required name="description" as="textarea" placeholder="Enter details about your issue here. How it happened, what is currently happening, steps to reproduce, anything you can provide." rows={6} />
+        </Form.Group>
+        <Form.Group>
+          <Button type="submit">Submit</Button>
+        </Form.Group>
+      </Form>
+    </>
   )
 }
