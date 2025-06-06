@@ -14,7 +14,7 @@ import {
 } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
 
-async function getTickets() {
+async function getTickets(): Promise<any> {
   const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets`, {
     credentials: 'include',
   })
