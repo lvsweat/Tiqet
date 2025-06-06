@@ -11,11 +11,11 @@ type LoginAttempt struct {
 }
 
 type NewUser struct {
-	Name string
-	Roles pq.StringArray
-	Email string
-	Username string
-	Password string
+	Name string `json:"name"`
+	Roles pq.StringArray `json:"roles"`
+	Email string `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type Login struct {
