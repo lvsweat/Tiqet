@@ -35,5 +35,6 @@ func ConnectDatabase() {
 		DB.AutoMigrate(&structs.Login{})
 		DB.AutoMigrate(&structs.User{})
 		DB.AutoMigrate(&structs.Ticket{})
+		DB.AutoMigrate(&structs.Tag{})
 	}
 }

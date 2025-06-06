@@ -29,6 +29,8 @@ func EstablishEndpoints() {
 		engine.POST("/users", endpoints.PostUsersEndpoint)
 		engine.GET("/tickets", endpoints.GetTicketsEndpoint)
 		engine.POST("/tickets", endpoints.PostTicketsEndpoint)
+		engine.GET("/tags", endpoints.GetTagsEndpoint)
+		engine.POST("/tags", endpoints.PostTagsEndpoint)
 	}
 }
 

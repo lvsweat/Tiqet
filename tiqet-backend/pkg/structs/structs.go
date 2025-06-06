@@ -35,6 +35,12 @@ type User struct {
 	Roles pq.StringArray `gorm:"type:text[];not null" json:"roles"`
 }
 
+type Tag struct {
+	gorm.Model
+	Name string `gorm:"type:text;not null" json:"name"`
+	Roles pq.StringArray `gorm:"type:text[];not null" json:"roles"` 
+}
+
 type Ticket struct {
 	gorm.Model
 	ID uint32 `gorm:"type:integer;not null;unique;primary_key"`
