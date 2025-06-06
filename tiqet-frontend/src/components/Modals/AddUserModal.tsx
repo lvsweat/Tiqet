@@ -27,9 +27,11 @@ async function submitUser(formData: FormData) {
     {
       method: 'POST',
       body: JSON.stringify({
-        title: formData.get('title'),
-        tags: selectedRoles,
-        description: formData.get('description'),
+        name: formData.get('name'),
+        roles: selectedRoles,
+        email: formData.get('email'),
+        username: formData.get('username'),
+        password: formData.get('password'),
       }),
       credentials: 'include',
     },
