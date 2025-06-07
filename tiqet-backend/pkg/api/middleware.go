@@ -18,7 +18,6 @@ func AuthMiddleware(c *gin.Context) {
 		return
 	}
 
-
 	token, parseErr := jwt.Parse(authToken, func(t *jwt.Token) (interface{}, error) {
 		if t.Method.Alg() != "HS256" {
 			return nil, fmt.Errorf("bad sign algorithm")
