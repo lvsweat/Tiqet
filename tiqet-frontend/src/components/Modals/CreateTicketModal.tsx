@@ -48,9 +48,9 @@ export default function CreateTicketModal() {
     const loadTickets = async () => {
       setTags(await getTags())
     }
-
     loadTickets()
   }, [])
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
