@@ -71,12 +71,8 @@ func GetTagsEndpoint(c *gin.Context) {
 
 	authedUser, getUserErr := utils.GetUserByID(uint32(authedId))
 
-	switch getUserErr {
-	case 1:
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"data": nil})
-		return
-	case 2:
-		c.IndentedJSON(http.StatusUnauthorized, gin.H{"data": nil})
+	if getUserErr != 0 {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"data": nil})
 		return
 	}
 
