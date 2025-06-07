@@ -6,7 +6,7 @@ export default async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === '/login') {
     if (token) {
       const cookie = request.headers.get('cookie')!
-      const userResp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`, {
+      const userResp = await fetch(`${process.env.BACKEND_CONTAINER}/user`, {
         headers: {
           cookie,
         },
@@ -28,7 +28,7 @@ export default async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === '/admin') {
     if (token) {
       const cookie = request.headers.get('cookie')!
-      const userResp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`, {
+      const userResp = await fetch(`${process.env.BACKEND_CONTAINER}/user`, {
         headers: {
           cookie,
         },

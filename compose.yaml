@@ -1,6 +1,8 @@
 services:
     frontend:
         build: ./tiqet-frontend
+        environment:
+            - BACKEND_CONTAINER=http://backend:8080
         depends_on:
             - backend
         ports:
