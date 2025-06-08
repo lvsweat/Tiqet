@@ -11,8 +11,8 @@ import (
 
 var engine *gin.Engine
 
-
 func EstablishEndpoints() {
+	engine.GET("/healthcheck", endpoints.GetHealthCheck)
 	engine.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{os.Getenv("CORS_ALLOW_ORIGIN")}, // Origin for CORS to allow. Configured in .env.backend
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -22,7 +22,6 @@ func EstablishEndpoints() {
 	}))
 
 	engine.POST("/auth", endpoints.AuthenticateUserEndpoint)
-	engine.GET("/user/:id", endpoints.GetUserByIDEndpoint)
 	engine.Use(AuthMiddleware)
 	{
 		engine.GET("/user", endpoints.GetUserEndpoint)
